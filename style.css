@@ -1,0 +1,281 @@
+body{
+    background:#282828;
+    margin:0px;
+}
+
+.main{
+    border: solid 1px #ffffff;
+    border-radius: 10px;
+}
+
+/************************/
+
+#editor{
+    width:66vw;
+    height:50vh;
+    overflow-y: scroll;
+    background:#1a1a1a;
+    color:#0ae0e0;
+    font-size:1.1em;
+    caret-color: #0ae0e0;
+    padding-left:0.5em;
+}
+
+#editor::-webkit-scrollbar{
+    width:15px;
+}
+#editor::-webkit-scrollbar-track{
+    border-radius:10px;
+    background:#424242;
+}
+#editor::-webkit-scrollbar-thumb{
+    background:#0c0c0c;
+}
+
+.emoji_txt{
+    vertical-align:middle;
+    width:25px;
+}
+
+/*************************/
+
+#line_num{
+    width:4vw !important;
+    background:#222222;
+}
+
+#output{
+    width:70vw;
+    height:35vh;
+    overflow-y: scroll;
+    background:#000000;
+    color:#ffffff;
+    border: solid 1px #ffffff;
+}
+
+#output::-webkit-scrollbar{
+    width:15px;
+}
+#output::-webkit-scrollbar-track{
+    border-radius:10px;
+    background:#424242;
+}
+#output::-webkit-scrollbar-thumb{
+    background:#0c0c0c;
+}
+
+/***************************/
+
+#help_coding{
+    width:22vw;
+    height:35vh;
+    padding:0.5em;
+    overflow-y: scroll;
+    background:#1a1a1a;
+    border: solid 1px #ffffff;
+    border-radius: 10px;
+}
+
+#help_coding > li{
+    margin-left:0.5em;
+    font-size:1.5em;
+    color:#ffffff;
+}
+
+#help_coding::-webkit-scrollbar{
+    width:15px;
+}
+#help_coding::-webkit-scrollbar-track{
+    border-radius:10px;
+    background:#424242;
+}
+#help_coding::-webkit-scrollbar-thumb{
+    background:#0c0c0c;
+}
+
+
+#emoji_list{
+    width:22vw;
+    height:50vh;
+    overflow-y: scroll;
+    overflow-x: scroll;
+    background:#1a1a1a;
+    border: solid 1px #ffffff;
+    border-radius: 10px;
+}
+
+#emoji_list::-webkit-scrollbar{
+    width:15px;
+}
+#emoji_list::-webkit-scrollbar-track{
+    border-radius:10px;
+    background:#424242;
+}
+#emoji_list::-webkit-scrollbar-thumb{
+    background:#0c0c0c;
+}
+
+.emoji{
+    width:50px;
+}
+
+/* drop down menu ***************/
+
+header{
+    background:#141414;
+}
+
+.menu {
+	list-style-type:none;
+    color:#1eff00;
+}
+.menu > li {
+	display:inline-block;
+	position:relative;
+    padding:0.2em;
+}
+.menu > li > ul {
+	display:none;
+}
+.menu > li:hover ul {
+	display:block;
+	position:absolute;
+	padding:0;
+	margin:0;
+	top:1.5em;
+	left:0;
+	list-style-type:none;
+	background:#141414;
+}
+
+.menu > li:hover > ul > li {
+    width:120px;
+    padding-left:1em;
+    color:#1eff00;
+    cursor:pointer;
+}
+.menu > li:hover > ul > li > a {
+    text-decoration: none;
+    color:#1eff00;
+}
+
+
+.menu > li > ul > li:hover {
+	background:#202020;
+}
+
+/**************************/
+
+.contents{
+    display: flex;
+}
+
+.list{
+    list-style: none;
+}
+
+.button{
+    align-items: center;
+    padding: 0.5em 1.5em;
+    width: 100px;
+    color: #333;
+    font-size: 18px;
+    background-color: #55aaff;
+    border-radius: 10px;
+  }
+
+
+  
+
+  .help_button{
+    padding: .6em 1em;
+    background:#1fbeda;
+    color: #333;
+    border-radius:30px;
+}
+.help_button:hover{
+    background:#1ca7c0;
+}
+.help_button:active{
+    background:#1ca7c0;
+}
+
+
+/**********************************************/
+
+#inputFile {
+    position: relative;
+    padding: 100px 0 40px;
+    text-align: center;
+}
+
+#dropArea {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    padding: 10px 0 0;
+    border: 2px dashed #494949;
+    color:#1eff00;
+    background: rgba(22, 165, 191, 0);
+    transition: all 0.25s cubic-bezier(0.21, 0.51, 0.51, 1);
+}
+
+#dropArea.dragover {
+    border: 2px solid #16a5bf;
+    background: rgba(22, 165, 191, 0.6);
+}
+
+#uploadFile {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 10;
+    display: block;
+    width: 300px;
+    height: 80px;
+    opacity: 0;
+}
+
+#inputFileWrap {
+    position: relative;
+    display: inline-block;
+}
+
+#btnInputFile,
+#btnChangeFile {
+    display: table;
+    width: 300px;
+}
+
+#btnChangeFile {
+    display: none;
+}
+
+
+#btnInputFile span,
+#btnChangeFile span {
+    position: relative;
+    z-index: 2;
+    display: table-cell;
+    width: 100px;
+    height: 50px;
+    border: 1px solid #333;
+    border-radius: 30px;
+    background: #111;
+    text-decoration: none;
+    color: #1eff00;
+    font-size: 17px;
+    line-height: 1;
+    font-weight: bold;
+    vertical-align: middle;
+}
+
+#upFileWrap.selected #btnInputFile {
+    display: none;
+}
+
+#upFileWrap.selected #btnChangeFile {
+    display: table;
+}

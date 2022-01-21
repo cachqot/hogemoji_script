@@ -1,0 +1,105 @@
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <link rel="stylesheet" href="style.css">
+        <link rel="stylesheet" href="modal.css">
+        <link rel="icon" type="text/svg" href="logo.svg">
+        <title>hogemoji script editor v0.1</title>
+    </head>
+
+    <body>
+
+        <header>
+            <ul class="menu">
+                    <span style="border:1px solid #aaaaaa;color:#888888;font-size:1.2em;">hogemoji script editor v0.1</span>
+                <li>
+                    ファイル
+                    <ul>
+                        <li onclick="download_code()">保存  Ctrl+S</li>
+                        <li><a href="#open">開く Ctrl+O</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </header>
+
+        <div class="contents">
+
+            <div class="list">
+                <div id="help_coding">
+                    <li>Coding help</li>
+                    <br>
+                    <span class="help_button" style="border: solid 2px #ff00ff;" onclick='make_code("function")'>関数（命令）を作成</span>
+                </div>
+                <div id="emoji_list">
+                    <table>
+                        <tr>
+                        </tr>
+                      </table>
+                </div>
+            </div>
+
+            <div class="list">
+
+                <div class="contents main" >
+                    <div id="line_num">
+                    
+                    </div>
+
+                    <div contenteditable="true" id="editor">
+
+                    </div>
+                </div>
+                <button class="button" onclick="run()">run</button>
+                <div id="output">
+                    
+                </div>
+            </div>
+        </div>
+
+
+        <!--modal window-->
+          <div class="modal-wrapper" id="open">
+            <a href="#!" class="modal-overlay"></a>
+            <div class="modal-window">
+              <div class="modal-content">
+
+                <div id="upFileWrap">
+                    <div id="inputFile">
+                        <!-- ドラッグ&ドロップエリア -->
+                        <p id="dropArea">ここにファイルをドロップしてください<br>または</p>
+                
+                        <!-- 通常のinput[type=file] -->
+                        <div id="inputFileWrap">
+                            <input type="file" name="uploadFile" id="uploadFile" accept=".hge">
+                            <div id="btnInputFile"><span>ファイルを選択する</span></div>
+                            <div id="btnChangeFile"><span>ファイルを変更する</span></div>
+                        </div>
+                    </div>
+                </div>
+
+              </div>
+              <a href="#!" class="modal-close">×</a>
+            </div>
+          </div>
+
+
+
+                  <!--coding help window-->
+                  <div class="modal-wrapper" id="help_window">
+                    <a href="#!" class="modal-overlay"></a>
+                    <div class="modal-window">
+                      <div class="modal-content">
+                          <div id="help_content">
+                              <center>
+                                <span style="color:#fff;">In preparation.</span>
+                              </center>
+                          </div>
+                      </div>
+                      <a href="#!" class="modal-close">×</a>
+                    </div>
+                  </div>
+
+    </body>
+    <script src="editor.js"></script>
+    <script src="main.js"></script>
+</html>

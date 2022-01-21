@@ -1,0 +1,55 @@
+
+//variable
+
+/*variable name*/ (equal) 100
+
+//calc
+
+/*variable name*/ (equal) 100 (plus) 200 (minus) 300
+
+/*************************/
+
+
+
+//Run a function
+
+(/*function name*/) (pare) 0 (dot) 1 (dot) 2 (dot) (pare_end)
+
+(/*function mame*/)(pare)(pare_end)
+
+
+/*************************/
+
+
+
+//Definition a function
+
+(function) main (pare) (pare_end)
+
+	/*Here the your code.*/
+
+(command_end)
+
+
+/************************/
+
+
+
+//if
+
+(if) (pare) 1 (equal) 1 (pare_end)
+
+	/* Here the your code. */
+
+(command_end)
+
+/*************************/
+
+
+//loop
+
+(loop)(pare)1(pare_end)
+
+	/* Here the your code. */
+
+(command_end)
