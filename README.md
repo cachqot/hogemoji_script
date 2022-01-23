@@ -13,6 +13,9 @@
 
 [Document](https://rihitosan.com/blog/hogemoji_docintr.html)
 
+
+![image1](https://user-images.githubusercontent.com/76610702/150675688-7e8af047-b429-4d49-a6af-1a2d2945777f.png)
+
 ## Contribution
 
 ### Bugs / Feedback
