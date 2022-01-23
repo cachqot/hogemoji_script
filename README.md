@@ -1,5 +1,5 @@
 <p align="center">
-             ![logo](https://raw.githubusercontent.com/frozelab/hogemoji_script/main/logo.svg)
+             <img src="https://raw.githubusercontent.com/frozelab/hogemoji_script/main/logo.svg">
             <h2 align="center">hogemoji script v0.01 beta</h2>
             <p align="center">It's the new programming language.Have a nice day!:)</p>
             <p align="center">
