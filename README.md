@@ -7,7 +7,8 @@
                 <img src="http://img.shields.io/badge/language-python-yellow.svg?style=flat">
                 <img src="http://img.shields.io/badge/pull requests-welcome-green.svg?style=flat">
                 <img src="http://img.shields.io/badge/issue-welcome-green.svg?style=flat">
-            </p>
+            </p><br>
+            <p align="center"><strong><a href="https://rihitosan.com/blog/hogemoji_docintr.html">Document</a></strong></p>
             <br>
 
 [Document](https://rihitosan.com/blog/hogemoji_docintr.html)
