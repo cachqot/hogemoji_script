@@ -1,5 +1,5 @@
 <p align="center">
-             ![logo](https://user-images.githubusercontent.com/76610702/150673749-fd40373f-9916-488c-aef0-54e62cba7c53.svg)
+             ![logo](https://raw.githubusercontent.com/frozelab/hogemoji_script/main/logo.svg)
             <h2 align="center">hogemoji script v0.01 beta</h2>
             <p align="center">It's the new programming language.Have a nice day!:)</p>
             <p align="center">
