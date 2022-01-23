@@ -4,7 +4,8 @@
             <p align="center">It's the new programming language.Have a nice day!:)</p>
             <p align="center">
                 <img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat">
-                <img src="http://img.shields.io/badge/language-python-yellow.svg?style=flat">
+                <img src="http://img.shields.io/badge/emoji🙃-00aacc.svg?style=flat">
+                <img src="http://img.shields.io/badge/language-javascript-aa00cc.svg?style=flat">
                 <img src="http://img.shields.io/badge/pull requests-welcome-green.svg?style=flat">
                 <img src="http://img.shields.io/badge/issue-welcome-green.svg?style=flat">
             </p><br>
@@ -34,6 +35,13 @@ If you would like include new commands,I'll be happy to it.So you have to write 
 - [ ] Support GUI.
 
 If you made their,please send a pull request.
+
+
+## Badge
+
+![badge](https://img.shields.io/badge/language-hogemoji%20script%20%F0%9F%99%83-00aacc.svg?style=flat)
+
+
 
 ## License
 MIT license.
