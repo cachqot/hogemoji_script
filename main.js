@@ -123,8 +123,12 @@ function read_code(){
                 div.innerHTML = ret_list[j]; //html要素に変換
                 document.body.appendChild(div); //bodyに追加
 
-                if(div.getElementsByTagName("img").length != 0){
+                if(div.getElementsByTagName("img").length != 0){ //img （命令）なら
                     var ret_alt = div.getElementsByTagName("img")[0].getAttribute('alt') //altを取得
+
+                }else if(div.getElementsByTagName("br").length != 0){ //brなら改行
+                    var ret_alt = "\n"
+
                 }else{
                     var ret_alt = div.textContent //img(命令)以外はテキストを読む
                 }
@@ -135,7 +139,7 @@ function read_code(){
                 ret_code += ret_alt
 
             }
-            ret_code += "\n"
+            ret_code += "\n" //divの終わりに改行 (つまり、divとbrで改行)
 
             //ヒュー終わった
 
@@ -389,7 +393,8 @@ function cmd_run(cmd){
             console.log(cmd[i])
             if(cmd[i].op == "(return)"){ //return なら速攻返す
                 console.log("kako------------------------")
-                func_return = cmd_run(cmd[i]) 
+                func_return = cmd_run(cmd[i])
+                return 0; 
             }else{ //普通は順番に実行する
                 cmd_run(cmd[i]) 
             }
@@ -572,6 +577,11 @@ function var_to_val(str){
 
 //strにダブルクオーテーションをつける
 function str_to_val(str){
+    console.log("aaaaa")
+    console.log(str)
+    if(str == ""){
+        return ""
+    }
     if(!isNaN(str)){ //数字だったら
         return Number(str)
     }

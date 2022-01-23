@@ -118,6 +118,15 @@ body{
 .emoji{
     width:50px;
 }
+.emoji:hover{
+    cursor:pointer;
+    border-radius:10px;
+    background:#272727;
+}
+.emoji:active{
+    border-radius:10px;
+    background:#131313;
+}
 
 /* drop down menu ***************/
 

@@ -40,7 +40,8 @@ var emoji_list =
     "(function)","(return)",
     "(command_end)",
     "(if)","(loop)",
-    "(print)","(input)"
+    "(print)","(input)",
+    "(comment)"
   ]
 
 
@@ -102,17 +103,34 @@ function add_click(e){
       } else {
           text = e.clipboardData.getData("text/html")
       }
-      
-      document.execCommand('insertHTML', false, text);
+
+      text = del_div(text)
+
+      document.execCommand('insertHTML', false,text);
       
   }, false);
 }());
 
+//divタグを削除するくそ関数
 function del_div(element){
 
-  
+  //編集しやすくするためわざとcreateelementしている
+  var div = document.createElement("div")
+  div.innerHTML = element
+  document.body.appendChild(div)
+  if(div.getElementsByTagName("div").length != 0){ //divがあったらコピーするelementの一行一行のdivを外してbr(改行)をつける
+    var ret = ""
+    for(var i = 0;i < div.getElementsByTagName("div").length;i++){ //※div内にdivがあったらバグる
+      ret += String(div.getElementsByTagName("div")[i].innerHTML)+"<br>"
+    }
+  }else{ //divがなかったら
+    var ret = String(div.innerHTML)
+  }
+  document.body.removeChild(div)
+  return ret
 }
 
+//divがなかったら両端にdivをつける
 function add_div_paste(element){
   if(in_tag("div",element)){
     return element
@@ -399,6 +417,7 @@ function open_img(input_code){
 
 /********************************* */
 /*
+//行った変更が保存されない場合があります
 
 window.onbeforeunload = function() {
 };
