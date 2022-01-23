@@ -238,7 +238,8 @@ function add_funcrun(){
     "(function)",
     "(command_end)",
     "(if)","(loop)",
-    "(greater)","(smaller)"] //デフォルトの関数,予約語
+    "(greater)","(smaller)",
+    "(comment)"] //デフォルトの関数,予約語
 
     var tokens_ret = []
 
@@ -332,6 +333,12 @@ function parser(t,p=0){
         var op_func = t.shift()
         var right_func = parser(t,0)
         var left_tmp =  {left:left_func,op:op_func,right:right_func}
+    }else
+    if(t[0] == "(comment)"){ //コメント
+        pare_runfunc = true
+        var left_func = t.shift()
+        var op_func = t.shift()
+        var left_tmp =  {left:left_func,op:op_func,right:"(none)"}
     }
 
 
@@ -392,7 +399,7 @@ function cmd_run(cmd){
         for(var i = 0;i < cmd.length;i++){   //Arrayの場合は命令がたくさん詰まっているのでその命令をすべて実行する
             console.log(cmd[i])
             if(cmd[i].op == "(return)"){ //return なら速攻返す
-                console.log("kako------------------------")
+                console.log("debug return")
                 func_return = cmd_run(cmd[i])
                 return 0; 
             }else{ //普通は順番に実行する
@@ -515,10 +522,11 @@ function cmd_run(cmd){
                         input_list = [input_list]
                     }
 
-                    for(var i = 0;i < input_list.length;i++){  // '"' をとる
+                    for(var i = 0;i < input_list.length;i++){  // '"' をつける
                         input_list[i] = var_to_val(input_list[i])
                     }
                     console.log(input_list)
+                    console.log(var_local_val)
 
                     for(var i = 0;i < var_local_val.length;i++){//ローカル変数を引数の数に合わせる
                         var_local_name.push(input_list[i])
@@ -577,7 +585,7 @@ function var_to_val(str){
 
 //strにダブルクオーテーションをつける
 function str_to_val(str){
-    console.log("aaaaa")
+    console.log("debug str")
     console.log(str)
     if(str == ""){
         return ""
