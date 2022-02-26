@@ -17,6 +17,17 @@
 
 ![image1](https://user-images.githubusercontent.com/76610702/150675688-7e8af047-b429-4d49-a6af-1a2d2945777f.png)
 
+## Description
+This is grobal programming language.because we are programming for use "emoji".
+
+<strong>:) What's emoji?</strong>
+
+Emoji is for representing a word by picture.so,It's globaly because It's language free.
+
+We can use it for edication.
+
+
+
 ## Contribution
 
 ### Bugs / Feedback
