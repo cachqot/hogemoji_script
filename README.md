@@ -1,6 +1,6 @@
 <p align="center">
              <img src="https://raw.githubusercontent.com/frozelab/hogemoji_script/main/logo.svg">
-            <h2 align="center">hogemoji script v0.01 beta</h2>
+            <h2 align="center">hogemoji script v0.02 beta</h2>
             <p align="center">It's the new programming language.Have a nice day!:)</p>
             <p align="center">
                 <img src="http://img.shields.io/badge/license-MIT-blue.svg?style=flat">
@@ -29,7 +29,7 @@ If you would like include new commands,I'll be happy to it.So you have to write 
 
 ## TODO
 
-- [ ] Make a error system.
+- [x] Make a error system.
 - [ ] Add new commands.
 - [ ] Increase documents.
 - [ ] Support GUI.
