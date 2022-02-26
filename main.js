@@ -408,8 +408,24 @@ function cmd_run(cmd){
         }
     }else if(typeof(cmd) == "object"){ //jsonだった場合、普通にleft,op,rightを読み込んで実行
 
+        var op_cmd_list = ["(equal)","(dot)","(greater)","(smaller)","(plus)","(minus)","(times)","(division)","(percent)"] //何かの値の真ん中に来るコマンド集
+        if(op_cmd_list.indexOf(cmd.op) != -1){ //真ん中に来るコマンドなら
+            if(cmd.right == undefined){ //右側の値がなかったら
+                echo_error('There wasn\'t a value to right of the command "'+cmd.op+'".') //op error msg
+            }
+            if(cmd.left == undefined){ //右側の値がなかったら
+                echo_error('There wasn\'t a value to left of the command "'+cmd.op+'".') //op error msg
+            }
+        }
+
         switch(cmd.op){ //真ん中に命令があるか確かめる   四則演算など
+
             case "(equal)": //変数宣言
+
+                
+                if(typeof(cmd.left) != "string"){
+                    echo_error('Unknown syntax error by "'+cmd.op+'" .')
+                }
 
                 if(if_mode){ //if_mode=trueなら(equal)を比較とみなす
                     if(cmd_run(cmd.left) == cmd_run(cmd.right)){ // left = right
@@ -477,10 +493,14 @@ function cmd_run(cmd){
                 break;
         }
 
-
         switch(cmd.left){
             
             case "(funcrun)": //関数実行
+
+                if(cmd.right == undefined){
+                    echo_error('There wasn\'t a argument by function "'+cmd.op+'".') //funcrun error msg
+                }
+
                 var func_args = cmd_run(cmd.right["op"])
                 if(!Array.isArray(func_args)){ //Arrayじゃないなら無理やりArrayにする
                     func_args = [str_to_val(func_args)]
@@ -491,6 +511,11 @@ function cmd_run(cmd){
                 break;
             
             case "(if)":
+
+                if(cmd.op["op"] == undefined || cmd.op["left"]["op"] == "(none)"){ //条件式がない
+                    echo_error('There wasn\'t a conditional expression by "if command".')
+                }
+                
                 if_mode = true //(equal)を比較記号とみなす
                 var if_jud = cmd_run(cmd.op["left"]["op"])
                 if_mode = false
@@ -506,6 +531,11 @@ function cmd_run(cmd){
                 break;
 
             case "(loop)":
+                
+                if(isNaN(cmd.op["left"]["op"])){ //数字じゃなかったら
+                    echo_error('There wasn\'t number by loop.')
+                }
+                
                 var nam = cmd_run(cmd.op["left"]["op"])
                 if(!isNaN(nam)){
                     for(var i = 0;i < nam;i++){
@@ -517,6 +547,10 @@ function cmd_run(cmd){
             case "(function)":
                 if(func_mode){ //関数実行モード
                     var input_list = cmd_run(cmd.right["left"]["op"]) //引数を代入する変数の名前
+
+                    if(cmd.right == undefined){
+                        echo_error('There wasn\'t a command for run by "function command".')
+                    }
 
                     if(!Array.isArray(input_list)){ //Arrayじゃないなら無理やりArrayにする
                         input_list = [input_list]
@@ -547,6 +581,7 @@ function cmd_run(cmd){
                 break;
 
             default:
+                
                 break;
         }
 
@@ -600,10 +635,35 @@ function str_to_val(str){
     return str
 }
 
+//@param str string
+//echo to string
+
+//@param mode number
+//1:echo the string in console
+
+//@param data string
+//mode>1:string's color
+
+function console_api(str,mode,data){
+    output_area = document.getElementById("output") 
+
+    switch(mode){
+        case 1:
+            if(data != ""){ //カラーコードが渡された場合色を塗る
+                output_area.innerHTML+= "<span style='color:"+data+";'>"+str+"</span><br>"
+            }else{ //渡されていない場合はそのまんま
+                output_area.innerHTML+= str+"<br>"
+            }
+        default:
+            break;
+    }
+}
+
+function echo_error(str){
+    console_api("ERROR: "+str,1,"#ff0000")
+}
 
 function funcrun(func,args){ //関数を実行する
-
-    output_area = document.getElementById("output") 
 
     switch(func){
 
@@ -613,7 +673,7 @@ function funcrun(func,args){ //関数を実行する
             var print_text = String(var_to_val(args[0]))
             console.log("debug : "+args[0])
             console.log("output_print_function : "+print_text)  //ダブルクオーテーションを外すとかして、表示する
-            output_area.innerHTML+= print_text+"<br>"
+            console_api(print_text,1)
             break;
 
         case "(input)":
@@ -624,7 +684,7 @@ function funcrun(func,args){ //関数を実行する
 
             var input_text = prompt(print_text)
 
-            output_area.innerHTML += input_text+"<br>"
+            console_api(input_text,1)
 
             return str_to_val(input_text)
             break;
@@ -636,10 +696,12 @@ function funcrun(func,args){ //関数を実行する
         //プログラム内で作られた関数の場合
         default:
 
+            var is_function = false; //これは関数かそうじゃないか エラーを出力するときに使う
             var_local_val = args  //ローカル変数を引数にする
             func_mode = true //関数実行中
             for(var i = 0;i < func_list_name.length;i++){ //関数を人ずつ探す
-                if(func_list_name[i] == func){ //この名前の関数が見つかったなら
+                if(func_list_name[i] == func){ //この名前の関数が見つかったら
+                    is_function = true //これは関数と判明
 
                     cmd_run(ast[func_list_num[i]])  //関数を実行
 
@@ -656,6 +718,10 @@ function funcrun(func,args){ //関数を実行する
                     break;
 
                 }
+            }
+
+            if(!is_function){
+                echo_error('Not found this function "'+func+'".') //function error_msg
             }
 
             break;
