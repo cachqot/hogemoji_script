@@ -38,7 +38,7 @@ var emoji_list =
 ["(equal)","(plus)","(minus)","(times)","(division)","(percent)",
     "(pare)","(pare_end)","(dot)","(greater)","(smaller)",
     "(function)","(return)",
-    "(command_end)",
+    "(command_end)","(else)",
     "(if)","(loop)",
     "(print)","(input)",
     "(comment)"
