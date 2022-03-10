@@ -2,112 +2,67 @@
     <head>
         <meta charset="UTF-8">
         <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="modal.css">
-        <link rel="icon" type="text/svg" href="logo.svg">
-        <title>hogemoji script editor v0.02 beta</title>
+        <meta property="og:url" content="https://frozelab.net/">
+        <meta property="og:title" content="Froze Lab">
+        <meta property="og:image" content="https://frozelab.net/logo.svg">
+	    <link rel="icon" type="text/svg" href="logo.svg">
+        <link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0">
+        <title>Frozelab - Home</title>
     </head>
 
     <body>
-
-        <header>
-            <ul class="menu">
-                    <span style="border:1px solid #aaaaaa;color:#888888;font-size:1.2em;">hogemoji script editor v0.02 beta</span>
-                <li>
-                    ファイル
-                    <ul>
-                        <li onclick="download_code()">保存</li>
-                        <li><a href="#open">開く</a></li>
-                    </ul>
-                </li>
-
-                <li>
-                    ドキュメント
-                    <ul>
-                        <li><a href="https://rihitosan.com/blog/hogemoji_docintr.html">紹介</a></li>
-                        <li><a href="https://github.com/frozelab/hogemoji_script">Github</a></li>
-                    </ul>
-                </li>
-            </ul>
-        </header>
-
-        <div class="contents">
-
-            <div class="list">
-                <div id="help_coding">
-                    <li>Coding help</li>
-                    <br>
-                    <span class="help_button" style="border: solid 2px #ff00ff;" onclick='make_code("function")'>関数（命令）を作成</span>
-                </div>
-                <div id="emoji_list">
-                    <table>
-                        <tr>
-                        </tr>
-                      </table>
-                </div>
-            </div>
-
-            <div class="list">
-
-                <div class="contents main" >
-                    <div id="line_num">
-                    
-                    </div>
-
-                    <div contenteditable="true" id="editor">
-
-                    </div>
-                </div>
-                <button class="button" onclick="run()">run</button>
-                <div id="output">
-                    
-                </div>
-            </div>
+        <div class="header">
         </div>
 
+    <center>
+        <img style="padding-top:8em;width:200px;" src="logo.svg"><br><br>
+        <span style="font-size:1.3rem;">The best software for you. - あなたに最高のソフトウェアを。</span><br><br>
+        <a href="#" class="gradbtn_back">
+            <div class="gradbtn">About</div>
+        </a>
 
-        <!--modal window-->
-          <div class="modal-wrapper" id="open">
-            <a href="#!" class="modal-overlay"></a>
-            <div class="modal-window">
-              <div class="modal-content">
+        <div style="padding-top:9em;">
+            <span style="font-size:2em;">- About -</span><br><br>
+            <span>このサイトは<a href="https://rihitosan.com/">rihitosan.com</a>を運営している人によってつくられました。</span><br>
+            <span>プロジェクトなどを公開していく予定です。</span><br><br>
+            <a href="#" class="gradbtn_back">
+                <div class="gradbtn">About</div>
+            </a>
+        </div>
 
-                <div id="upFileWrap">
-                    <div id="inputFile">
-                        <!-- ドラッグ&ドロップエリア -->
-                        <p id="dropArea">ここにファイルをドロップしてください<br>または</p>
-                
-                        <!-- 通常のinput[type=file] -->
-                        <div id="inputFileWrap">
-                            <input type="file" name="uploadFile" id="uploadFile" accept=".hge">
-                            <div id="btnInputFile"><span>ファイルを選択する</span></div>
-                            <div id="btnChangeFile"><span>ファイルを変更する</span></div>
-                        </div>
-                    </div>
-                </div>
+        <div style="padding-top:9em;">
+            <span style="font-size:2em;">- Project -</span><br><br>
+            プロジェクト一覧です。<br><br>
+            <a class="project_menu"><img src="./project/frozeos/logo.svg" style="width:200px;"></a>
+            <a class="project_menu"><img src="./project/hogemoji_script/logo.svg" style="width:200px;"></a>
+            <a class="project_menu"><img src="./project/github_profile_prompt/card.svg" style="width:400px;"></a>
+            <br><br>
+            <a href="./project" class="gradbtn_back">
+                <div class="gradbtn">Project</div>
+            </a>
+        </div>
+    </center>
 
-              </div>
-              <a href="#!" class="modal-close">×</a>
-            </div>
-          </div>
+    <div style="padding-top:9em;" class="m_text">
+        <center><span style="font-size:2em;">- Q&A / よくある質問(架空 & 想定) -</span></center><br><br>
+
+        <span style="font-size:1.3em;">Q. 企業や団体・グループですか？</span><br><br>
+        <span style="padding-left:1em;">A. 違います。個人が運営するサイト、ホームページのような位置づけだと思います。</span><br><br><br>
+        <span style="font-size:1.3em;">Q. 当ホームページでダウンロードしたソフト・サービスで損害が発声した場合はどうすればいいですか。</span><br><br>
+        <span style="padding-left:1em;">A. GPL license や MIT license　などのオープンソースライセンスの場合、責任は負いかねますが、フィードバックは受け付けております。</span><br><br><br>
+        <span style="font-size:1.3em;">Q. 開発に貢献したいです。</span><br><br>
+        <span style="padding-left:1em;">A. Githubからできます。 <a href="https://github.com/frozelab">https://github.com/frozelab</a></span><br><br><br>
+        <span style="font-size:1.3em;">Q. こんなことしてて恥ずかしくないですか？</span><br><br>
+        <span style="padding-left:1em;">A. 楽しぃぃいぃぃ＾ω＾ーーーーーーーーーー </span><br><br><br>   
+        <span style="font-size:1.3em;">Q. 母国語でしゃべってもええんやで😁✌</span><br><br>
+        <span style="padding-left:1em;">A. あいあむあじゃぱにーずぴーぽー</span><br><br><br>   
+    </div>
 
 
-
-                  <!--coding help window-->
-                  <div class="modal-wrapper" id="help_window">
-                    <a href="#!" class="modal-overlay"></a>
-                    <div class="modal-window">
-                      <div class="modal-content">
-                          <div id="help_content">
-                              <center>
-                                <span style="color:#fff;">comming soon...</span>
-                              </center>
-                          </div>
-                      </div>
-                      <a href="#!" class="modal-close">×</a>
-                    </div>
-                  </div>
-
+        <div style="padding-top:200px;"></div>
+        <footer>
+        </footer>
     </body>
-    <script src="editor.js"></script>
     <script src="main.js"></script>
 </html>
