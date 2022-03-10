@@ -1,0 +1,5 @@
+<svg width="300" height="300" xmlns="http://www.w3.org/2000/svg" viewBox="-150 -150 300 300">
+
+	<path d="M138 57 L 57 138 L -57 138 L -138 57 L -138 -57 L -57 -138 L 57 -138 L 138 -57 z" style="fill:#DAAAFF"></path>
+	<text x="-60" y="15" font-family="Verdana" font-size="60" fill="#C03AFF">else</text>
+</svg>
