@@ -28,6 +28,7 @@ var div = document.getElementById('editor')
     div.addEventListener("keydown",add_div)
     div.addEventListener("mousedown", add_div)
 
+//最初にdivタグ(改行)を追加する
 function add_div() {
     if(div.childElementCount == 0 || String(div.children[0].localName) == "br"){ //divが含まれていないなら or <br>なら
       document.getElementById('editor').innerHTML = '<div><br></div>'
@@ -35,6 +36,8 @@ function add_div() {
 }
 
 var emoji_list = 
+[
+//basic command
 ["(equal)","(plus)","(minus)","(times)","(division)","(percent)",
     "(pare)","(pare_end)","(dot)","(greater)","(smaller)",
     "(function)","(return)",
@@ -42,26 +45,39 @@ var emoji_list =
     "(if)","(loop)",
     "(print)","(input)",
     "(comment)"
+  ],
+
+//window command
+[
+  "(start_win)","(draw_rect)","(clean_can)"
   ]
 
 
-//絵文字のリストを追加
+]
+
+
+//絵文字のリストを表示
 
 var n = 0;
 var line = 0;
 
-var table_element = document.getElementById("emoji_list").getElementsByTagName("table")[0]
+var table_element = document.getElementById("emoji_list").getElementsByTagName("table")
 
 for(var i = 0;i < emoji_list.length;i++){
-  if(n == 5){
-    table_element.innerHTML += "<tr></tr>"
-    n = 0
-    line += 1
+  line = 0;
+  for(var j = 0;j < emoji_list[i].length;j++){
+    var te = document.getElementById("emoji_list").getElementsByTagName("table")[i]
+
+    if(n == 5){ //改行
+      te.innerHTML += "<tr></tr>"
+      n = 0
+      line += 1
+    }
+  
+    te.getElementsByTagName("tr")[line].innerHTML += '<td><img class="emoji" onclick="add_click();" src="emoji/'+emoji_list[i][j].replace("(","").replace(")","")+'.svg" alt="'+emoji_list[i][j]+'"></td>'
+  
+    n += 1
   }
-
-  table_element.getElementsByTagName("tr")[line].innerHTML += '<td><img class="emoji" onclick="add_click();" src="emoji/'+emoji_list[i].replace("(","").replace(")","")+'.svg" alt="'+emoji_list[i]+'"></td>'
-
-  n += 1
 }
 
 //editorに命令(img)を挿入
@@ -126,7 +142,7 @@ function del_div(element){
   }else{ //divがなかったら
     var ret = String(div.innerHTML)
   }
-  document.body.removeChild(div)
+  document.body.removeChild(div) //編集し終わってもういらないから削除
   return ret
 }
 

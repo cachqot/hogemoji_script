@@ -1,17 +1,36 @@
 <html>
     <head>
         <meta charset="UTF-8">
-        <link rel="stylesheet" href="style.css">
-        <link rel="stylesheet" href="modal.css">
+        <link rel="stylesheet" href="css/style.css">
+        <link rel="stylesheet" href="css/modal.css">
         <link rel="icon" type="text/svg" href="logo.svg">
-        <title>hogemoji script editor v0.02 beta</title>
+        <title>hogemoji script editor v0.03 beta</title>
     </head>
 
     <body>
 
+        <!---
+            開発に追われない日々（）
+
+
+
+            vwvwvwwvvwvwwvwvwwwvwvwvwvwvw
+            #############################
+            #############################
+            #############################
+            #############################
+            #############################
+            #############################
+            java vm版作りたい
+
+
+
+            開発に追われる日々（）
+        -->
+
         <header>
             <ul class="menu">
-                    <span style="border:1px solid #aaaaaa;color:#888888;font-size:1.2em;">hogemoji script editor v0.02 beta</span>
+                    <span style="border:1px solid #aaaaaa;color:#888888;font-size:1.2em;">hogemoji script editor v0.03 beta</span>
                 <li>
                     ファイル
                     <ul>
@@ -39,7 +58,14 @@
                     <span class="help_button" style="border: solid 2px #ff00ff;" onclick='make_code("function")'>関数（命令）を作成</span>
                 </div>
                 <div id="emoji_list">
+                    <span style="color:#00ffaa;">basic</span>
                     <table>
+                        <tr>
+                        </tr>
+                      </table>
+                      <hr>
+                      <span style="color:#6aa1f3;">window</span>
+                      <table>
                         <tr>
                         </tr>
                       </table>
@@ -92,6 +118,21 @@
 
 
 
+                  <!--gui support window (game)-->
+                  <div class="modal-wrapper" id="gui">
+                    <a href="#!" class="modal-overlay"></a>
+                    <div class="modal-window">
+                      <div class="modal-content">
+                          <div id="help_content">
+                              <canvas width="500" height="400" id="gui_support" style="background:#000000;"></canvas>
+                          </div>
+                      </div>
+                      <a href="#!" class="modal-close">×</a>
+                    </div>
+                  </div>
+
+
+
                   <!--coding help window-->
                   <div class="modal-wrapper" id="help_window">
                     <a href="#!" class="modal-overlay"></a>
@@ -109,5 +150,6 @@
 
     </body>
     <script src="editor.js"></script>
+    <script src="window.js"></script>
     <script src="main.js"></script>
 </html>

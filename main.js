@@ -36,6 +36,7 @@ var func_return = null  //プログラム内のreturnの値を収納する
 var else_jud = false //ifの前にelseがついていたか
 var else_false_jud = false //ifの前にelseがついていた場合で判定がfalseだった場合
 
+
 function run(){
     //init
     input_code = ""
@@ -622,13 +623,14 @@ function var_to_val(str){
         }
     }
 
+    //グローバル変数
     for(var i = 0;i < var_list_name.length;i++){ //これが変数かそうではないかを確かめる
         if(str == var_list_name[i]){ //変数だったらその変数の値を返す
             return var_list_val[i]                                                                                                                          
         }
     }
 
-    //local var.
+    //local var.(ローカル変数)
     for(var i = 0;i < var_local_name.length;i++){ //これが変数かそうではないかを確かめる
         if(str == var_local_name[i]){ //変数だったらその変数の値を返す
             return var_local_val[i]                                                                                                                          
@@ -640,6 +642,8 @@ function var_to_val(str){
 }
 
 //strにダブルクオーテーションをつける
+//文字列をstring型にする
+//数字はnumberにする
 function str_to_val(str){
     console.log("debug str")
     console.log(str)
@@ -649,7 +653,7 @@ function str_to_val(str){
     if(!isNaN(str)){ //数字だったら
         return Number(str)
     }
-    if(typeof(str) == "string"){
+    if(typeof(str) == "string"){ //stringだったら
         return '"'+str+'"'
     }
 
@@ -669,7 +673,7 @@ function console_api(str,mode,data){
     output_area = document.getElementById("output") 
 
     switch(mode){
-        case 1:
+        case 1: //mode 1
             if(data != ""){ //カラーコードが渡された場合色を塗る
                 output_area.innerHTML+= "<span style='color:"+data+";'>"+str+"</span><br>"
             }else{ //渡されていない場合はそのまんま
@@ -687,9 +691,14 @@ function echo_error(str){
 
 function funcrun(func,args){ //関数を実行する
 
+    //args[n]  引数
+
     switch(func){
 
         //デフォルトの関数の場合
+        //basic command
+
+        //args:print value
         case "(print)":
             
             var print_text = String(var_to_val(args[0]))
@@ -698,6 +707,7 @@ function funcrun(func,args){ //関数を実行する
             console_api(print_text,1)
             break;
 
+        //args:echo value
         case "(input)":
             var print_text = String(var_to_val(args[0]))
             console.log("debug : "+args[0])
@@ -711,8 +721,48 @@ function funcrun(func,args){ //関数を実行する
             return str_to_val(input_text)
             break;
 
+        //args : return value
         case "(return)":
             return var_to_val(args[0]) //リターンするだけの関数
+            break;
+
+        
+        /*They functions are not added in editor yet*****************************************************************/ 
+
+        //gui support command
+
+        //open the window
+        //args : width,height
+        case "(start_win)":
+            if(args[0] == undefined || args[1] == undefined){ //引数が入力されていなかったら
+                canvas.width = 400
+                canvas.height = 400
+
+            }else{ //引数が入力されている
+                canvas.width = str_to_val(args[0])
+                canvas.height = str_to_val(args[1])
+            }
+
+            location.href = "#gui"
+            break;
+
+        //draw rect
+        //args : x,y,width,height,color code
+        case "(draw_rect)":
+            //x,y,width,height
+            ctx.beginPath()
+            ctx.rect(args[0],args[1],args[2],args[3])
+            ctx.fillStyle = var_to_val(args[4]) //color code(RGB)
+            ctx.fill()
+            ctx.closePath()
+            break;
+
+        //clean the canvas
+        //args : x,y,width,height
+        case "(clean_can)":
+            //x,y,width,height
+            ctx.clearRect(args[0],args[1],args[2],args[3])
+            return 0;
             break;
         
         //プログラム内で作られた関数の場合
@@ -721,7 +771,7 @@ function funcrun(func,args){ //関数を実行する
             var is_function = false; //これは関数かそうじゃないか エラーを出力するときに使う
             var_local_val = args  //ローカル変数を引数にする
             func_mode = true //関数実行中
-            for(var i = 0;i < func_list_name.length;i++){ //関数を人ずつ探す
+            for(var i = 0;i < func_list_name.length;i++){ //関数をひとつずつ探す
                 if(func_list_name[i] == func){ //この名前の関数が見つかったら
                     is_function = true //これは関数と判明
 
@@ -749,3 +799,18 @@ function funcrun(func,args){ //関数を実行する
             break;
     }
 }
+
+/*
+#functions
+
+cmd_run(json[program])           :run anything commands
+
+var_to_val(str)     :"variable to value" or "remove double quotations"
+str_to_val(str)     :string to value (number,etc...)
+
+##console
+
+console_api(str,mode,data) :echo the strings on console
+echo_error(str)            :echo the error on console
+
+*/

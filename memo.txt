@@ -53,3 +53,112 @@
 	/* Here the your code. */
 
 (command_end)
+
+
+
+
+/********************************************/
+
+
+プログラミング言語の基本的な作り方(独自)
+
+・lexerを作る
+
+コマンドや文字列を区切ってプログラムで処理しやすい形にする
+
+例:
+input.(str)
+abc=1+2+3*4
+
+output.(list)
+["abc","=","1","+","2","+","3","*","4"]
+
+
+・parser
+
+プログラムを層に分けて、より処理しやすくするパーサー結構大事
+
+例:
+input.(list)
+["abc","=","1","+","2","+","3","*","4"]
+
+output.(json)
+[
+    {
+        "left": "abc",
+        "op": "=",
+        "right": {
+            "left": {
+                "left": "1",
+                "op": "+",
+                "right": "2"
+            },
+            "op": "+",
+            "right": {
+                "left": "3",
+                "op": "*",
+                "right": "4"
+            }
+        }
+    }
+]
+
+例2:
+input.
+["a", "=", "1", "+", "2"]
+
+output.
+[
+    {
+        "left": "a",
+        "op": "(equal)",
+        "right": {
+            "left": "1",
+            "op": "(plus)",
+            "right": "2"
+        }
+    }
+]
+
+例3(複雑なので例を増やした):
+input.
+["a", "=", "1"]
+
+output.
+[
+    {
+        "left": "a",
+        "op": "=",
+        "right": "1"
+    }
+]
+
+・コマンド実行処理(メイン):
+
+コマンドを実行するだけ
+
+例:
+input.
+(str)
+command : "print('hello');"
+(list)
+lexer : ["print","(","'hello'",")",";"]
+(json)
+parser:
+[
+    {
+        "left": "print",
+        "op": {
+            "left": "(",
+            "op": "'hello'",
+            "right": ")"
+        },
+        "right": ";"
+    }
+]
+
+
+output.
+
+---------console--------------
+hello
