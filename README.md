@@ -10,6 +10,7 @@
                 <img src="http://img.shields.io/badge/issue-welcome-green.svg?style=flat">
             </p><br>
             <p align="center"><strong><a href="https://rihitosan.com/blog/hogemoji_docintr.html">Document</a></strong></p>
+            <p align="center"><strong><a href="https://rihitosan.com/tools/hogemoji_script/">Editor</a></strong></p>
             <br>
 
 [Document](https://rihitosan.com/blog/hogemoji_docintr.html)
@@ -22,9 +23,11 @@ This is grobal programming language.because we can code in "emoji".
 
 <strong>:) What's emoji?</strong>
 
-Emoji is for representing a word by picture.so,It's globaly because It's language free.
+An emoji is like a pictogram embdded in text and use in electronic messages,web pages,etc.
 
-We can use it for edication.
+It's globaly because It's language free.
+
+And we can use it for edication.
 
 
 
@@ -32,11 +35,12 @@ We can use it for edication.
 
 ### Bugs / Feedback
 
-If you found bugs or, you have feedbacks, please create issue or send a pull request on this repository.come on! :)
+If you found bugs or, you have feedbacks, please create a issue or send a pull request on this repository.come on! :)
 
 ### Add New commands
 
-If you would like include new commands,I'll be happy to it.So you have to write a specific description to it for add new commands.
+If you'd like to add a new command,I'll be happy.
+You have to send a Pull request about it.
 
 ## TODO
 
@@ -45,7 +49,6 @@ If you would like include new commands,I'll be happy to it.So you have to write 
 - [ ] Increase documents.
 - [ ] Support GUI.
 
-If you made their,please send a pull request.
 
 
 ## Badge
